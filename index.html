@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>서울시 공공자전거 이용정보 보고서</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #0078d4;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0078d4;
+            color: #fff;
+        }
+        /* 네비게이션바 스타일 */
+        nav {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>서울시 공공자전거 이용정보 보고서</h1>
+    </header>
+    <nav>
+        <!-- 자기 파트 웹페이지 만들어서 제목 추하 html파일 연결하기-->
+        <a href="#summary">이용 현황 요약</a>
+        <a href="#monthlyChart">월별 이용 건수 그래프</a>
+        <a href="#detailData">상세 데이터</a>
+    </nav>
+    <div class="container">
+        <h2>이용 현황 요약</h2>
+        <p>2023년 10월 서울시 공공자전거 이용 현황에 대한 요약 정보입니다.</p>
+        <table>
+            <tr>
+                <th>구역</th>
+                <th>총 이용 건수</th>
+                <th>평균 이용 시간</th>
+            </tr>
+            <tr>
+                <td>강남구</td>
+                <td>5,432</td>
+                <td>20 분</td>
+            </tr>
+            <!-- 다른 구역에 대한 데이터 추가 -->
+        </table>
+        
+        <h2>그래프: 월별 이용 건수</h2>
+        <canvas id="monthlyChart"></canvas>
+
+        <h2>상세 데이터</h2>
+        <p>각 구역 및 기간별 자세한 데이터는 다음과 같습니다:</p>
+        <table>
+            <tr>
+                <th>구역</th>
+                <th>날짜</th>
+                <th>이용 건수</th>
+                <th>평균 이용 시간</th>
+            </tr>
+            <tr>
+                <td>강남구</td>
+                <td>2023-10-01</td>
+                <td>300</td>
+                <td>18 분</td>
+            </tr>
+            <!-- 다른 데이터 추가 -->
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 월별 이용 건수 그래프 데이터
+        var monthlyData = {
+            labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월"],
+            datasets: [{
+                label: "이용 건수",
+                data: [5000, 5200, 5800, 6300, 6800, 7100, 7200, 7300, 6900, 6500],
+                backgroundColor: "rgba(0, 120, 212, 0.6)",
+            }],
+        };
+
+        var ctx = document.getElementById("monthlyChart").getContext("2d");
+        var chart = new Chart(ctx, {
+            type: "bar",
+            data: monthlyData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    </script>
+</body>
+</html>
