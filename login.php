@@ -11,7 +11,7 @@
         // 비밀번호가 일치하면 세션에 저장
         if ($enteredPassword === $adminPassword) {
             $_SESSION["adminLoggedIn"] = true;
-            header("Location: 6.php");
+            header("Location: 1.php");
             exit();
         } else {
             $error = "비밀번호가 일치하지 않습니다.";
